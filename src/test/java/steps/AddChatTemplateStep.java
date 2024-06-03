@@ -16,7 +16,7 @@ public class AddChatTemplateStep {
         access_login();
     }
     @Given("User can access Chat Template page")
-    public void user_can_access_chat_template_page() {
+    public void user_can_access_chat_template_page() throws InterruptedException {
         access_chat_template_menu();
     }
     @When("User click button Create New Template")
@@ -56,7 +56,7 @@ public class AddChatTemplateStep {
         driver.findElement(By.id(save_new_template)).click();
     }
     @Then("The new template success added")
-    public void the_new_template_success_added() {
+    public void the_new_template_success_added() throws InterruptedException {
         access_chat_template_menu();
     }
 

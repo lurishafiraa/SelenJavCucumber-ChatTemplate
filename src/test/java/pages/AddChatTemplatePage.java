@@ -1,13 +1,16 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static utilities.BrowserDriver.driver;
 
 
 public class AddChatTemplatePage {
 
-    public static String chat_template_menu = "pointer NavigationMenu_MenuItem NavMenuActive";
+    public static String chat_template_menu = "//a[@href='/template/chat-template']";
     public static String no_template_page_xpath = "//*[@id=\"root\"]/div[2]/div[2]/div[2]";
     public static String create_new_template_xpath = "//*[@id=\"root\"]/div[2]/div[2]/div[2]/div[3]/button/p";
     public static String popup_new_template_xpath = "//*[@id=\"root\"]/div[2]/div[2]/div[2]";
@@ -21,8 +24,11 @@ public class AddChatTemplatePage {
     public static String save_new_template = "addnewtemplate_buble_btn_createtemplate";
 
 
-    public static void access_chat_template_menu() {
-        driver.findElement(By.className(chat_template_menu)).click();
+    public static void access_chat_template_menu() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement chat_template = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(chat_template_menu)));
+        chat_template.click();
+//        driver.findElement(By.xpath(chat_template_menu)).click();
     }
 
     public static void validation_no_template_page() {
